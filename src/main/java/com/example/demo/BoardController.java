@@ -16,6 +16,6 @@ public class BoardController {
     @PostMapping("/boards")
     public String createBoard(@RequestBody BoardCreateRequest request) {
         Long savedId = boardService.createBoard(request);
-        return savedId + "번 게시글이 성공적으로 생성되었습니다!";
+        return savedId + "번 게시글이 성공적으로 생성되었습니다!"; //git push test
     }
 }
