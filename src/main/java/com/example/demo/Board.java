@@ -1,11 +1,16 @@
 package com.example.demo;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EntityListeners;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import java.time.LocalDateTime;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @Entity
+@EntityListeners(AuditingEntityListener.class)
 public class Board {
 
     @Id
@@ -15,11 +20,12 @@ public class Board {
     private String title;
     private String content;
 
-    // 기본 생성자
+    @CreatedDate
+    private LocalDateTime createdAt;
+
     public Board() {
     }
 
-    // 데이터 저장용 생성자
     public Board(String title, String content) {
         this.title = title;
         this.content = content;
@@ -35,5 +41,9 @@ public class Board {
 
     public String getContent() {
         return content;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
     }
 }
